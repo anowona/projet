@@ -3,6 +3,8 @@ include("inc.config.php");
 
 if (isset($_GET["codeConsole"])) {
     $codeConsole = $_GET["codeConsole"];
+} else {
+	header("Location: consoles.php");
 }
 
 $sqlc = "SELECT * FROM console WHERE codeConsole='$codeConsole'";

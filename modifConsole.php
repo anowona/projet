@@ -1,7 +1,7 @@
 <?php
 include("inc.config.php");
 
-if (isset($_GET["codeConsole"])) {
+if (isset($_GET["codeConsole"]) AND isset($_SESSION["admin"])) {
     $codeConsole = $_GET["codeConsole"];
     $sqlc = "SELECT * FROM console WHERE codeConsole='$codeConsole'";
     $resultc = mysqli_query($conn, $sqlc);
@@ -11,6 +11,27 @@ if (isset($_GET["codeConsole"])) {
         $designation = $rowc["designation"];
         $marque = $rowc["marque"];
     }
+} else {
+	header("Location: consoles.php");
+}
+
+if (isset($_POST["supprimer"])) {
+
+ $sqls = "DELETE FROM console WHERE codeConsole='$codeConsole'";
+            mysqli_query($conn, $sqls);
+
+$sqlq = "SELECT * FROM relation_consolejeuvideo WHERE codeConsole='$codeConsole'";
+    $resultq = mysqli_query($conn, $sqlq);
+    if (mysqli_num_rows($resultq) > 0) {
+        while (mysqli_fetch_assoc($resultq)) {
+            $sqld = "DELETE FROM relation_consolejeuvideo WHERE codeConsole='$codeConsole'";
+            mysqli_query($conn, $sqld);
+        }
+    }	
+
+$message = "Console supprimée avec succes";
+header("Location: consoles.php?message=$message");
+
 }
 
 if (isset($_POST["modifier"])) {
@@ -46,7 +67,8 @@ include("inc.head.php");
                 <td><input type="text" name="marque" id="marque" value="<?php echo $marque ?>"></td>
             </tr>
         </table>
-        <input type="submit" value="Modifier" name="modifier">
+        <input type="submit" value="Modifier la console" name="modifier">
+<input type="submit" value="Supprimer la console" name="supprimer" onclick="return confirm('Voulez vous vraiment supprimer la console?')">
     </fieldset>
 </form>
 

@@ -3,6 +3,8 @@ include("inc.config.php");
 
 if (isset($_GET["codeJeu"])) {
     $codeJeu = $_GET["codeJeu"];
+} else {
+	header("Location: jeux.php");
 }
 
 $sqljv = "SELECT * FROM jeuvideo WHERE codeJeu='$codeJeu'";

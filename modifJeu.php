@@ -5,7 +5,7 @@ $sqlc = "SELECT * FROM console";
 $resultc = mysqli_query($conn, $sqlc);
 
 
-if (isset($_GET["codeJeu"])) {
+if (isset($_GET["codeJeu"]) AND isset($_SESSION["admin"])) {
     $codeJeu = $_GET["codeJeu"];
     $sqlj = "SELECT * FROM jeuvideo WHERE codeJeu='$codeJeu'";
     $resultj = mysqli_query($conn, $sqlj);
@@ -18,7 +18,32 @@ if (isset($_GET["codeJeu"])) {
         $fonctionnement = $rowj["fonctionnement"];
         $editeur = $rowj["editeur"];
         $mode = $rowj["mode"];
+	$photo = $rowj["photo"];
     }
+} else {
+	header("Location: jeux.php");
+}
+
+if (isset($_POST["supprimer"])) {
+
+ $sqls = "DELETE FROM jeuvideo WHERE codeJeu='$codeJeu'";
+            mysqli_query($conn, $sqls);
+
+$sqlq = "SELECT * FROM relation_consolejeuvideo WHERE codeJeu='$codeJeu'";
+    $resultq = mysqli_query($conn, $sqlq);
+    if (mysqli_num_rows($resultq) > 0) {
+        while (mysqli_fetch_assoc($resultq)) {
+            $sqld = "DELETE FROM relation_consolejeuvideo WHERE codeJeu='$codeJeu'";
+            mysqli_query($conn, $sqld);
+        }
+    }	
+if (file_exists("photo/$photo")) {
+            unlink("photo/$photo");
+        }
+
+$message = "Jeu supprimé avec succes";
+header("Location: jeux.php?message=$message");
+
 }
 
 if (isset($_POST["modifier"])) {
@@ -29,7 +54,6 @@ if (isset($_POST["modifier"])) {
     $editeur = mysqli_real_escape_string($conn, $_POST["editeur"]);
     $mode = mysqli_real_escape_string($conn, $_POST["mode"]);
     /////////////////////// PHOTOREUPLOAD /////////////////////////////////////////////////////////////////////
-    $photo = "";
     if (isset($_FILES["photo"])) {
         $target_dir = "photo/";
         $target_file = $target_dir . basename($_FILES["photo"]["name"]);
@@ -83,9 +107,8 @@ if (isset($_POST["modifier"])) {
     $sqlq = "SELECT * FROM relation_consolejeuvideo WHERE codeJeu='$codeJeu'";
     $resultq = mysqli_query($conn, $sqlq);
     if (mysqli_num_rows($resultq) > 0) {
-        while ($rowd = mysqli_fetch_assoc($resultq)) {
-            $cC = $rowd["codeConsole"];
-            $sqld = "DELETE FROM relation_consolejeuvideo WHERE codeConsole='$cC'";
+        while (mysqli_fetch_assoc($resultq)) {
+            $sqld = "DELETE FROM relation_consolejeuvideo WHERE codeJeu='$codeJeu'";
             mysqli_query($conn, $sqld);
         }
     }
@@ -113,8 +136,8 @@ include("inc.head.php");
         <legend>Modifier Jeu Video</legend>
         <table>
             <tr>
-                <td><label for="titre">Titre*</label></td>
-                <td><input type="text" name="titre" id="titre" value="<?php echo $titre ?>" required></td>
+                <td><label for="titre">Titre</label></td>
+                <td><input type="text" name="titre" id="titre" value="<?php echo $titre ?>"></td>
             </tr>
             <tr>
                 <td><label for="typeJeu">typeJeu</label></td>
@@ -129,8 +152,8 @@ include("inc.head.php");
                 <td><input type="text" name="fonctionnement" id="fonctionnement" value="<?php echo $fonctionnement ?>"></td>
             </tr>
             <tr>
-                <td><label for="editeur">Editeur*</label></td>
-                <td><input type="text" name="editeur" id="editeur" value="<?php echo $editeur ?>" required></td>
+                <td><label for="editeur">Editeur</label></td>
+                <td><input type="text" name="editeur" id="editeur" value="<?php echo $editeur ?>"></td>
             </tr>
             <tr>
                 <td><label for="mode">Modes: </label></td>
@@ -183,6 +206,7 @@ include("inc.head.php");
         <br>
 
         <input type="submit" value="Modifier le jeu video" name="modifier">
+	<input type="submit" value="Supprimer le jeu video" name="supprimer" onclick="return confirm('Voulez vous vraiment supprimer le jeu video?')">
     </fieldset>
 </form>
 
