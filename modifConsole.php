@@ -1,7 +1,7 @@
 <?php
 include("inc.config.php");
 
-if (isset($_GET["codeConsole"]) AND isset($_SESSION["admin"])) {
+if (isset($_GET["codeConsole"]) and isset($_SESSION["admin"])) {
     $codeConsole = $_GET["codeConsole"];
     $sqlc = "SELECT * FROM console WHERE codeConsole='$codeConsole'";
     $resultc = mysqli_query($conn, $sqlc);
@@ -12,26 +12,25 @@ if (isset($_GET["codeConsole"]) AND isset($_SESSION["admin"])) {
         $marque = $rowc["marque"];
     }
 } else {
-	header("Location: consoles.php");
+    header("Location: consoles.php");
 }
 
 if (isset($_POST["supprimer"])) {
 
- $sqls = "DELETE FROM console WHERE codeConsole='$codeConsole'";
-            mysqli_query($conn, $sqls);
+    $sqls = "DELETE FROM console WHERE codeConsole='$codeConsole'";
+    mysqli_query($conn, $sqls);
 
-$sqlq = "SELECT * FROM relation_consolejeuvideo WHERE codeConsole='$codeConsole'";
+    $sqlq = "SELECT * FROM relation_consolejeuvideo WHERE codeConsole='$codeConsole'";
     $resultq = mysqli_query($conn, $sqlq);
     if (mysqli_num_rows($resultq) > 0) {
         while (mysqli_fetch_assoc($resultq)) {
             $sqld = "DELETE FROM relation_consolejeuvideo WHERE codeConsole='$codeConsole'";
             mysqli_query($conn, $sqld);
         }
-    }	
+    }
 
-$message = "Console supprimée avec succes";
-header("Location: consoles.php?message=$message");
-
+    $message = "Console supprimée avec succes";
+    header("Location: consoles.php?message=$message");
 }
 
 if (isset($_POST["modifier"])) {
@@ -68,7 +67,7 @@ include("inc.head.php");
             </tr>
         </table>
         <input type="submit" value="Modifier la console" name="modifier">
-<input type="submit" value="Supprimer la console" name="supprimer" onclick="return confirm('Voulez vous vraiment supprimer la console?')">
+        <input type="submit" value="Supprimer la console" name="supprimer" onclick="return confirm('Voulez vous vraiment supprimer la console?')">
     </fieldset>
 </form>
 
