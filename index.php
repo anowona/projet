@@ -87,7 +87,7 @@ include("inc.head.php");
 <br>
 
 <section>
-    <form action="" method="POST">
+<form action="" method="POST">
         <fieldset>
             <legend>Inscription</legend>
             <table>

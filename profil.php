@@ -12,6 +12,8 @@ include("inc.head.php");
 ?>
 
 <h2>Profil</h2>
+<p><a href="modifInternaute.php">Modifier votre profil</a></p>
+
 <ul>
     <li>Nom et Prenoms: <?php echo $nom_prenoms ?></li>
     <li>Email: <?php echo $mail ?></li>

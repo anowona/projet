@@ -5,7 +5,7 @@ $sqlc = "SELECT * FROM console";
 $resultc = mysqli_query($conn, $sqlc);
 
 
-if (isset($_GET["codeJeu"]) AND isset($_SESSION["admin"])) {
+if (isset($_GET["codeJeu"]) and isset($_SESSION["admin"])) {
     $codeJeu = $_GET["codeJeu"];
     $sqlj = "SELECT * FROM jeuvideo WHERE codeJeu='$codeJeu'";
     $resultj = mysqli_query($conn, $sqlj);
@@ -18,32 +18,31 @@ if (isset($_GET["codeJeu"]) AND isset($_SESSION["admin"])) {
         $fonctionnement = $rowj["fonctionnement"];
         $editeur = $rowj["editeur"];
         $mode = $rowj["mode"];
-	$photo = $rowj["photo"];
+        $photo = $rowj["photo"];
     }
 } else {
-	header("Location: jeux.php");
+    header("Location: jeux.php");
 }
 
 if (isset($_POST["supprimer"])) {
 
- $sqls = "DELETE FROM jeuvideo WHERE codeJeu='$codeJeu'";
-            mysqli_query($conn, $sqls);
+    $sqls = "DELETE FROM jeuvideo WHERE codeJeu='$codeJeu'";
+    mysqli_query($conn, $sqls);
 
-$sqlq = "SELECT * FROM relation_consolejeuvideo WHERE codeJeu='$codeJeu'";
+    $sqlq = "SELECT * FROM relation_consolejeuvideo WHERE codeJeu='$codeJeu'";
     $resultq = mysqli_query($conn, $sqlq);
     if (mysqli_num_rows($resultq) > 0) {
         while (mysqli_fetch_assoc($resultq)) {
             $sqld = "DELETE FROM relation_consolejeuvideo WHERE codeJeu='$codeJeu'";
             mysqli_query($conn, $sqld);
         }
-    }	
-if (file_exists("photo/$photo")) {
-            unlink("photo/$photo");
-        }
+    }
+    if (file_exists("photo/$photo")) {
+        unlink("photo/$photo");
+    }
 
-$message = "Jeu supprimé avec succes";
-header("Location: jeux.php?message=$message");
-
+    $message = "Jeu supprimé avec succes";
+    header("Location: jeux.php?message=$message");
 }
 
 if (isset($_POST["modifier"])) {
@@ -206,7 +205,7 @@ include("inc.head.php");
         <br>
 
         <input type="submit" value="Modifier le jeu video" name="modifier">
-	<input type="submit" value="Supprimer le jeu video" name="supprimer" onclick="return confirm('Voulez vous vraiment supprimer le jeu video?')">
+        <input type="submit" value="Supprimer le jeu video" name="supprimer" onclick="return confirm('Voulez vous vraiment supprimer le jeu video?')">
     </fieldset>
 </form>
 

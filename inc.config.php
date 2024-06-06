@@ -33,7 +33,7 @@ if (isset($_SESSION["mail"])) {
         $date_inscr = $row["date_inscr"];
     }
 } else {
-    if (basename($_SERVER["PHP_SELF"]) == "profil.php") {
+    if (basename($_SERVER["PHP_SELF"]) == "profil.php" or basename($_SERVER["PHP_SELF"]) == "modifInternaute.php") {
         header("Location: index.php");
     }
 }
