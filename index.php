@@ -54,6 +54,7 @@ include("inc.head.php");
 //////////////////////////////// /HEAD ////////////////////////////////////////////////////////////////
 ?>
 <section>
+    <h2>Connexion</h2>
     <form action="" method="post">
         <fieldset>
             <legend>Connexion</legend>
@@ -87,6 +88,7 @@ include("inc.head.php");
 <br>
 
 <section>
+    <h2>Inscription</h2>
     <form action="" method="POST">
         <fieldset>
             <legend>Inscription</legend>

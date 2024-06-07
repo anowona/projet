@@ -127,10 +127,14 @@ include("inc.head.php");
                     <label>Sexe*: </label>
                 </td>
                 <td>
-                    <input type="radio" name="sexe" id="sexem" value="M" required>
+                    <input type="radio" name="sexe" id="sexem" value="M" required <?php if ($sexe == "M") {
+                                                                                        echo "checked";
+                                                                                    } ?>>
                     <label for="sexem">Masculin</label>
                     <br>
-                    <input type="radio" name="sexe" id="sexef" value="F" required>
+                    <input type="radio" name="sexe" id="sexef" value="F" required <?php if ($sexe == "F") {
+                                                                                        echo "checked";
+                                                                                    } ?>>
                     <label for="sexef">Feminin</label>
                 </td>
             </tr>
