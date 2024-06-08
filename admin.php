@@ -182,7 +182,7 @@ include("inc.head.php");
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="">Consoles</label></td>
+                    <td><label>Consoles</label></td>
                     <td><?php
                         if (mysqli_num_rows($resultc) > 0) {
                             while ($rowc = mysqli_fetch_assoc($resultc)) {

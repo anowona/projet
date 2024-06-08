@@ -27,25 +27,13 @@ include("inc.head.php");
 if (mysqli_num_rows($resultij) > 0) {
 ?>
     <h3>Jeux enregistrés</h3>
-    <?php
+<?php
     while ($rowij = mysqli_fetch_assoc($resultij)) {
         $codeJeu = $rowij["codeJeu"];
         $sqljv = "SELECT * FROM jeuvideo WHERE codeJeu='$codeJeu'";
         $resultjv = mysqli_query($conn, $sqljv);
         while ($rowjv = mysqli_fetch_assoc($resultjv)) {
-    ?>
-            <article>
-                <table id="jeux">
-                    <tr>
-                        <td id="gauche"><img src="photo/<?php echo $rowjv["photo"] ?>" alt=""></td>
-                        <td id="droit">
-                            <h3><a href="jeu.php?codeJeu=<?php echo $rowjv["codeJeu"] ?>"><?php echo $rowjv["titre"] ?></a></h3>
-                            <p><?php echo $rowjv["description"] ?></p>
-                        </td>
-                    </tr>
-                </table>
-            </article>
-<?php
+            include("inc.article.php");
         }
     }
 }
