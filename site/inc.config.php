@@ -16,6 +16,7 @@ if (!$conn) {
 if (isset($_SESSION["mail"])) {
     if (basename($_SERVER["PHP_SELF"]) == "index.php") {
         header("Location: jeux.php");
+        exit;
     }
 
     $mail = mysqli_real_escape_string($conn, $_SESSION["mail"]);
@@ -35,5 +36,6 @@ if (isset($_SESSION["mail"])) {
 } else {
     if (basename($_SERVER["PHP_SELF"]) == "profil.php" or basename($_SERVER["PHP_SELF"]) == "modifInternaute.php") {
         header("Location: index.php");
+        exit;
     }
 }

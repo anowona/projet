@@ -3,7 +3,7 @@
         <tr>
             <td id="gauche">
                 <a href="jeu.php?codeJeu=<?php echo $rowjv["codeJeu"] ?>">
-                    <img src="photo/<?php echo $rowjv["photo"] ?>" alt="">
+                    <img src="photo/<?php echo $rowjv["photo"] ?>" alt="Photo de <?php echo $rowjv["titre"] ?>">
                 </a>
             </td>
             <td id="droit">

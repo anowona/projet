@@ -25,6 +25,7 @@ if (isset($_POST["console"])) {
     if (mysqli_query($conn, $sql)) {
         $message = "La console a eté ajoutée avec succes";
         header("Location: admin.php?message=$message");
+        exit;
     } else {
         $message = "Error:" . $sql . "<br>" . mysqli_error($conn);
     }
@@ -90,6 +91,7 @@ if (isset($_POST["jeuvideo"])) {
     if (mysqli_query($conn, $sql)) {
         $message .= "Le jeu a eté ajoutée avec succes.<br>";
         header("Location: jeu.php?codeJeu=$codeJeu");
+        exit;
     } else {
         $message .= "Error:" . $sql . "<br>" . mysqli_error($conn);
     }
@@ -103,7 +105,7 @@ if (isset($_POST["jeuvideo"])) {
 }
 
 $title = "Admin";
-$metaDescription = "plouf";
+$metaDescription = "Inserez les consoles et jeu videos ici en tant qu'admin";
 //////////////////////////////// HEAD ////////////////////////////////////////////////////////////////
 include("inc.head.php");
 //////////////////////////////// /HEAD ////////////////////////////////////////////////////////////////

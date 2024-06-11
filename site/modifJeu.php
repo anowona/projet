@@ -22,6 +22,7 @@ if (isset($_GET["codeJeu"]) and isset($_SESSION["admin"])) {
     }
 } else {
     header("Location: jeux.php");
+    exit;
 }
 
 if (isset($_POST["supprimer"])) {
@@ -43,6 +44,7 @@ if (isset($_POST["supprimer"])) {
 
     $message = "Jeu supprimé avec succes";
     header("Location: jeux.php?message=$message");
+    exit;
 }
 
 if (isset($_POST["modifier"])) {
@@ -120,11 +122,12 @@ if (isset($_POST["modifier"])) {
     }
 
     header("Location:jeu.php?codeJeu=$codeJeu&message=$message");
+    exit;
 }
 
 
 $title = "Modifier le jeu";
-$metaDescription = "plouf";
+$metaDescription = "Modifiez le jeu vieo ici en tant qu'admin";
 //////////////////////////////// HEAD ////////////////////////////////////////////////////////////////
 include("inc.head.php");
 //////////////////////////////// /HEAD ////////////////////////////////////////////////////////////////

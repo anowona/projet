@@ -13,6 +13,7 @@ if (isset($_POST["connexion"])) {
         if ($verify) {
             $_SESSION["mail"] = $mail;
             header("Location: profil.php");
+            exit;
         } else {
             $message = "Identifiants erronés!";
         }
@@ -39,6 +40,7 @@ if (isset($_POST["inscription"])) {
         if (mysqli_query($conn, $sql)) {
             $_SESSION["mail"] = $mail;
             header("Location: profil.php");
+            exit;
         } else {
             $message = "Error:" . $sql . "<br>" . mysqli_error($conn);
         }
@@ -48,7 +50,7 @@ if (isset($_POST["inscription"])) {
 }
 
 $title = "Formulaire";
-$metaDescription = "plouf";
+$metaDescription = "Inscrivez vous et connectez vous ici";
 //////////////////////////////// HEAD ////////////////////////////////////////////////////////////////
 include("inc.head.php");
 //////////////////////////////// /HEAD ////////////////////////////////////////////////////////////////
@@ -127,13 +129,13 @@ include("inc.head.php");
                 </tr>
                 <tr>
                     <td>
-                        <label>Sexe*: </label>
+                        <label>Sexe: </label>
                     </td>
                     <td>
-                        <input type="radio" name="sexe" id="sexem" value="M" required>
+                        <input type="radio" name="sexe" id="sexem" value="M">
                         <label for="sexem">Masculin</label>
                         <br>
-                        <input type="radio" name="sexe" id="sexef" value="F" required>
+                        <input type="radio" name="sexe" id="sexef" value="F">
                         <label for="sexef">Feminin</label>
                     </td>
                 </tr>

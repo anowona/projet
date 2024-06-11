@@ -13,6 +13,7 @@ if (isset($_GET["codeConsole"]) and isset($_SESSION["admin"])) {
     }
 } else {
     header("Location: consoles.php");
+    exit;
 }
 
 if (isset($_POST["supprimer"])) {
@@ -31,6 +32,7 @@ if (isset($_POST["supprimer"])) {
 
     $message = "Console supprimée avec succes";
     header("Location: consoles.php?message=$message");
+    exit;
 }
 
 if (isset($_POST["modifier"])) {
@@ -43,11 +45,12 @@ if (isset($_POST["modifier"])) {
         $message = "Error: " . $sqlm . "<br>" . mysqli_error($conn);
     }
     header("Location:console.php?codeConsole=$codeConsole&message=$message");
+    exit;
 }
 
 
 $title = "Modifier la console";
-$metaDescription = "plouf";
+$metaDescription = "Modifiez la console ici en tant qu'admin";
 //////////////////////////////// HEAD ////////////////////////////////////////////////////////////////
 include("inc.head.php");
 //////////////////////////////// /HEAD ////////////////////////////////////////////////////////////////

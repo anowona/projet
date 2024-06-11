@@ -8,12 +8,10 @@ if (isset($_GET["deco"])) {
         if (isset($_SESSION["mail"])) {
             unset($_SESSION["mail"]);
         }
-        echo 'mail';
     } else if ($deco == "admin") {
         if (isset($_SESSION["admin"])) {
             unset($_SESSION["admin"]);
         }
-        echo 'admin';
     }
 }
 if (isset($_GET["codeConsole"])) {
@@ -23,3 +21,4 @@ if (isset($_GET["codeJeu"])) {
     $page .= "?codeJeu=" . $_GET["codeJeu"];
 }
 header("Location: $page");
+exit;

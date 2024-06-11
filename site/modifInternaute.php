@@ -19,6 +19,7 @@ if (isset($_POST["supprimer"])) {
 
     $message = "Profil supprimé avec succes";
     header("Location: consoles.php?message=$message");
+    exit;
 }
 
 if (isset($_POST["modifier"])) {
@@ -83,12 +84,13 @@ if (isset($_POST["modifier"])) {
     }
     if ($redir == 1) {
         header("Location:profil.php?message=$message");
+        exit;
     }
 }
 
 
-$title = "Modifier la console";
-$metaDescription = "plouf";
+$title = "Modifier le profil";
+$metaDescription = "Modifier votre profil ici";
 //////////////////////////////// HEAD ////////////////////////////////////////////////////////////////
 include("inc.head.php");
 //////////////////////////////// /HEAD ////////////////////////////////////////////////////////////////

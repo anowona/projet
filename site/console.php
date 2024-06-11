@@ -5,6 +5,7 @@ if (isset($_GET["codeConsole"])) {
     $codeConsole = $_GET["codeConsole"];
 } else {
     header("Location: consoles.php");
+    exit;
 }
 
 $sqlc = "SELECT * FROM console WHERE codeConsole='$codeConsole'";
@@ -21,7 +22,7 @@ $sqlcj = "SELECT * FROM relation_consolejeuvideo WHERE codeConsole='$codeConsole
 $resultcj = mysqli_query($conn, $sqlcj);
 
 $title = "$designation - Console";
-$metaDescription = "plouf";
+$metaDescription = "$designation de $marque";
 //////////////////////////////// HEAD ////////////////////////////////////////////////////////////////
 include("inc.head.php");
 //////////////////////////////// /HEAD ////////////////////////////////////////////////////////////////

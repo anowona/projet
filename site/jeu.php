@@ -5,6 +5,7 @@ if (isset($_GET["codeJeu"])) {
     $codeJeu = $_GET["codeJeu"];
 } else {
 	header("Location: jeux.php");
+    exit;
 }
 
 $sqljv = "SELECT * FROM jeuvideo WHERE codeJeu='$codeJeu'";
@@ -64,7 +65,7 @@ $sqlcj = "SELECT * FROM relation_consolejeuvideo WHERE codeJeu='$codeJeu'";
 $resultcj = mysqli_query($conn, $sqlcj);
 
 $title = "$titre - Jeu";
-$metaDescription = "plouf";
+$metaDescription = "$description";
 //////////////////////////////// HEAD ////////////////////////////////////////////////////////////////
 include("inc.head.php");
 //////////////////////////////// /HEAD ////////////////////////////////////////////////////////////////
@@ -75,7 +76,7 @@ include("inc.head.php");
     <p><a href="modifJeu.php?codeJeu=<?php echo $codeJeu ?>">Modifier le jeu</a></p>
 <?php } ?>
 <div class="float gauche">
-    <img src="photo/<?php echo $photo ?>" alt="">
+    <img src="photo/<?php echo $photo ?>" alt="Photo de <?php echo $titre ?>">
 </div>
 <div class="float droit">
     <?php if (isset($_SESSION["mail"])) { ?>
