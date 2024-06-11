@@ -56,7 +56,7 @@ if (isset($_POST["jeuvideo"])) {
 
         // Check file size
         if ($_FILES["photo"]["size"] > 500000) {
-            $message .= "Sorry, your file is too large.<br>";
+            $message .= "Desolé, fichier trop large.<br>";
             $uploadOk = 0;
         }
 
@@ -65,13 +65,13 @@ if (isset($_POST["jeuvideo"])) {
             $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
             && $imageFileType != "gif"
         ) {
-            $message .= "Sorry, only JPG, JPEG, PNG & GIF files are allowed.<br>";
+            $message .= "Desolé, seuls les fichiers JPG, JPEG, PNG et GIF sont autorisés.<br>";
             $uploadOk = 0;
         }
 
         // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
-            $message .= "Sorry, your file was not uploaded.<br>";
+            $message .= "Desolé, votre photo n'a pas été enregistré.<br>";
             // if everything is ok, try to upload file
         } else {
             $photo = $codeJeu . "." . $imageFileType;
@@ -79,7 +79,7 @@ if (isset($_POST["jeuvideo"])) {
             if (move_uploaded_file($_FILES["photo"]["tmp_name"], $newFile)) {
                 $message .= "The file " . htmlspecialchars(basename($_FILES["photo"]["name"])) . " has been uploaded.<br>";
             } else {
-                $message .= "Sorry, there was an error uploading your file.<br>";
+                $message .= "Desolé, erreur lors de l'enregistrement.<br>";
             }
         }
     }

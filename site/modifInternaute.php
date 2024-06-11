@@ -1,7 +1,7 @@
 <?php
 include("inc.config.php");
 
-
+$message="";
 
 if (isset($_POST["supprimer"])) {
 
