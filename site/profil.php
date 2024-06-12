@@ -15,12 +15,12 @@ include("inc.head.php");
 <p><a href="modifInternaute.php">Modifier votre profil</a></p>
 
 <ul>
-    <li>Nom et Prenoms: <?php echo $nom_prenoms ?></li>
-    <li>Email: <?php echo $mail ?></li>
-    <li>Adresse: <?php echo $adresse ?></li>
-    <li>Sexe: <?php echo $sexe ?></li>
-    <li>Pays: <?php echo $pays ?></li>
-    <li>Date d'inscription: <?php echo $date_inscr ?></li>
+    <li><b>Nom et Prenoms:</b> <?php echo $nom_prenoms ?></li>
+    <li><b>Email:</b> <?php echo $mail ?></li>
+    <li><b>Adresse:</b> <?php echo $adresse ?></li>
+    <li><b>Sexe:</b> <?php echo $sexe ?></li>
+    <li><b>Pays:</b> <?php echo $pays ?></li>
+    <li><b>Date d'inscription:</b> <?php echo $date_inscr ?></li>
 </ul>
 
 <?php

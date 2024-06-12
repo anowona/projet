@@ -29,7 +29,7 @@ include("inc.head.php");
 ?>
 
 <h2><?php echo $designation ?></h2>
-<p>Marque: <?php echo $marque ?></p>
+<p style="text-align: center;"><b>Marque:</b> <?php echo $marque ?></p>
 <?php if (isset($_SESSION["admin"])) { ?>
     <p><a href="modifConsole.php?codeConsole=<?php echo $codeConsole ?>">Modifier la console</a></p>
 <?php } ?>

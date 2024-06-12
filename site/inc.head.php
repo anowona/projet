@@ -23,7 +23,7 @@
                     <li><a href="index.php">Formulaire</a></li>
                 <?php } ?>
                 <?php if (isset($_SESSION["admin"])) { ?>
-                    <li><a href="deco.php?deco=admin&page=<?php echo basename($_SERVER["PHP_SELF"]) . "&" . $_SERVER["QUERY_STRING"] ?>">Se deconnecter la session Admin</a></li>
+                    <li><a href="deco.php?deco=admin&page=<?php echo basename($_SERVER["PHP_SELF"]) . "&" . $_SERVER["QUERY_STRING"] ?>">Se deconnecter de la session Admin</a></li>
                 <?php } ?>
                 <li><a href="jeux.php">Jeux</a></li>
                 <li><a href="consoles.php">Consoles</a></li>

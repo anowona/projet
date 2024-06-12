@@ -94,12 +94,12 @@ include("inc.head.php");
     <?php } ?>
 
     <div id="details">
-        <p>Type: <?php echo $typeJeu ?></p>
-        <p>fonctionnement: <?php echo $fonctionnement ?></p>
-        <p>editeur: <?php echo $editeur ?></p>
-        <p>mode: <?php echo $mode ?></p>
-        <p>dateAjout: <?php echo $dateAjout ?></p>
-        <p>Consoles:
+        <p><b>Type:</b> <?php echo $typeJeu ?></p>
+        <p><b>Fonctionnement:</b> <?php echo $fonctionnement ?></p>
+        <p><b>Editeur:</b> <?php echo $editeur ?></p>
+        <p><b>Mode:</b> <?php echo $mode ?></p>
+        <p><b>Date d'ajout:</b> <?php echo $dateAjout ?></p>
+        <p><b>Consoles:</b>
             <?php
             if (mysqli_num_rows($resultcj) > 0) {
                 $rowcj = mysqli_fetch_assoc($resultcj);

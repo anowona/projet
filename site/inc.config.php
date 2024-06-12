@@ -3,7 +3,7 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "cours_projetphpklk";
+$dbname = "id22302924_projetphpklk";
 
 //Creation de la connexion
 $conn = mysqli_connect($servername, $username, $password, $dbname);
