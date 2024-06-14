@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mer. 12 juin 2024 à 18:14
+-- Généré le : jeu. 13 juin 2024 à 06:43
 -- Version du serveur : 10.5.20-MariaDB
 -- Version de PHP : 7.3.33
 
@@ -82,8 +82,8 @@ INSERT INTO `internaute` (`id_internaute`, `nom_prenoms`, `mail`, `mot_passe`, `
 --
 
 CREATE TABLE `jeuvideo` (
-  `id_jeu` int(11) UNSIGNED NOT NULL,
-  `codeJeu` varchar(10) NOT NULL,
+  `id_jeu` int(10) UNSIGNED NOT NULL,
+  `codeJeu` varchar(5) NOT NULL,
   `titre` varchar(50) NOT NULL,
   `typeJeu` varchar(20) NOT NULL,
   `description` longtext NOT NULL,
@@ -112,9 +112,9 @@ INSERT INTO `jeuvideo` (`id_jeu`, `codeJeu`, `titre`, `typeJeu`, `description`, 
 --
 
 CREATE TABLE `relation_consolejeuvideo` (
-  `idRelation` int(11) NOT NULL,
-  `codeConsole` varchar(255) NOT NULL,
-  `codeJeu` varchar(255) NOT NULL
+  `idRelation` int(10) UNSIGNED NOT NULL,
+  `codeConsole` varchar(5) NOT NULL,
+  `codeJeu` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -154,9 +154,9 @@ INSERT INTO `relation_consolejeuvideo` (`idRelation`, `codeConsole`, `codeJeu`) 
 --
 
 CREATE TABLE `relation_internautejeuvideo` (
-  `idRelation` int(11) NOT NULL,
+  `idRelation` int(10) UNSIGNED NOT NULL,
   `mail` varchar(50) NOT NULL,
-  `codeJeu` varchar(10) NOT NULL
+  `codeJeu` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -223,19 +223,19 @@ ALTER TABLE `internaute`
 -- AUTO_INCREMENT pour la table `jeuvideo`
 --
 ALTER TABLE `jeuvideo`
-  MODIFY `id_jeu` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_jeu` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT pour la table `relation_consolejeuvideo`
 --
 ALTER TABLE `relation_consolejeuvideo`
-  MODIFY `idRelation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
+  MODIFY `idRelation` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
 
 --
 -- AUTO_INCREMENT pour la table `relation_internautejeuvideo`
 --
 ALTER TABLE `relation_internautejeuvideo`
-  MODIFY `idRelation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `idRelation` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
